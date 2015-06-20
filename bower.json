@@ -1,0 +1,27 @@
+{
+  "name": "vee-peg",
+  "version": "0.0.1",
+  "homepage": "https://github.com/vee-lang/vee-peg.js",
+  "authors": [
+    "Victor Borja <vborja@apache.org>"
+  ],
+  "description": "Reactive Parser Generator for the Vee Programming Language",
+  "main": "browser.js",
+  "keywords": [
+    "peg",
+    "rxjs",
+    "rx",
+    "parser",
+    "combinator",
+    "vee",
+    "language"
+  ],
+  "license": "Apache-2.0",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

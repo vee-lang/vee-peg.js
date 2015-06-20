@@ -1,0 +1,60 @@
+{
+  "name": "vee-peg",
+  "version": "0.0.1",
+  "description": "Reactive Parser Generator for the Vee Programming Language",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/vee-lang/vee-peg.js"
+  },
+  "keywords": [
+    "peg",
+    "rxjs",
+    "rx",
+    "parser",
+    "combinator",
+    "vee",
+    "language"
+  ],
+  "author": "Victor Borja <vborja@apache.org>",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "babel": "5.5.x",
+    "babelify": "6.1.x",
+    "eslint": "^0.23.0",
+    "browserify": "10.2.4",
+    "markdox": "0.1.8",
+    "mocha": "2.2.5",
+    "testem": "0.8.3",
+    "uglify-js": "2.4.23"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "eslint": "eslint --rulesdir eslint-rules src/",
+    "test-common": "mocha --compilers js:babel/register test/common",
+    "pretest-onlynode": "mkdir -p test/node",
+    "test-onlynode": "mocha --compilers js:babel/register test/node",
+    "test-node": "npm run test-common && npm run test-onlynode",
+    "test-browser": "testem",
+    "pretest-browser": "browserify test/browser/index.js -t babelify -o test/browser/page/tests-bundle.js",
+    "posttest-browser": "rm test/browser/page/tests-bundle.js",
+    "test": "npm run eslint && npm run test-node && npm run test-browser",
+    "travis-test": "npm run eslint && npm run test-node",
+    "browserify": "browserify src/browser.js -t babelify --standalone vee-peg --outfile dist/vee-peg.browser.js",
+    "uglify": "uglifyjs dist/vee-peg.browser.js -o dist/vee-peg.browser.min.js",
+    "dist": "npm run browserify && npm run uglify",
+    "docs": "node ./scripts/make-api-docs.js",
+    "precompile-lib": "rm -rf lib/ && mkdir -p lib",
+    "compile-lib": "babel -d lib/ src/",
+    "prepublish": "npm run compile-lib",
+    "release": "npm run release-patch",
+    "release-patch": "git checkout master && npm run dist; git commit -a -m 'Build dist/'; npm version patch && git push origin master --tags && npm publish",
+    "release-minor": "git checkout master && npm run dist; git commit -a -m 'Build dist/'; npm version minor && git push origin master --tags && npm publish",
+    "release-major": "git checkout master && npm run dist; git commit -a -m 'Build dist/'; npm version major && git push origin master --tags && npm publish"
+  }
+}
