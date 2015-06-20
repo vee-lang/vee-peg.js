@@ -2,7 +2,7 @@
   "name": "vee-peg",
   "version": "0.0.1",
   "description": "Reactive Parser Generator for the Vee Programming Language",
-  "main": "index.js",
+  "main": "lib/node.js",
   "scripts": {
     "test": "mocha"
   },

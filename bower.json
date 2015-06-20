@@ -6,12 +6,12 @@
     "Victor Borja <vborja@apache.org>"
   ],
   "description": "Reactive Parser Generator for the Vee Programming Language",
-  "main": "browser.js",
+  "main": "lib/browser.js",
   "keywords": [
     "peg",
     "rxjs",
     "rx",
-    "parser",
+    "parser"
     "combinator",
     "vee",
     "language"
